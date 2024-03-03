@@ -1,0 +1,11 @@
+com\example\entities\Bishop.class
+com\example\entities\Rook.class
+com\example\entities\King.class
+com\example\Board.class
+com\example\entities\Queen.class
+com\example\interfaces\ChessPiece.class
+com\example\Position.class
+com\example\interfaces\InterfacePosition.class
+com\example\PieceColor.class
+com\example\entities\Knight.class
+com\example\entities\Pawn.class

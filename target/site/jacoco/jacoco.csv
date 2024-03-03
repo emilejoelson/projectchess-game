@@ -1,0 +1,10 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+chessgame,com.example,Board,55,388,32,64,10,69,28,23,0,3
+chessgame,com.example,PieceColor,7,25,0,0,3,6,2,2,2,2
+chessgame,com.example,Position,18,42,3,7,5,10,6,6,3,4
+chessgame,com.example.entities,Queen,3,217,2,22,0,31,2,18,0,8
+chessgame,com.example.entities,Rook,3,88,2,10,0,21,2,11,0,7
+chessgame,com.example.entities,Knight,3,173,2,14,0,25,2,14,0,8
+chessgame,com.example.entities,Bishop,3,180,2,16,0,26,2,15,0,8
+chessgame,com.example.entities,Pawn,0,195,6,18,0,25,6,13,0,7
+chessgame,com.example.entities,King,4,229,8,14,0,29,8,11,0,8

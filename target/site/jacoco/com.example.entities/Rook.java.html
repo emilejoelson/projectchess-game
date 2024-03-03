@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Rook.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">chessgame</a> &gt; <a href="index.source.html" class="el_package">com.example.entities</a> &gt; <span class="el_source">Rook.java</span></div><h1>Rook.java</h1><pre class="source lang-java linenums">package com.example.entities;
+
+import com.example.PieceColor;
+import com.example.Position;
+import com.example.interfaces.ChessPiece;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+public class Rook implements ChessPiece {
+
+    private Position position;
+    private PieceColor color;
+    private boolean moved;
+
+<span class="fc" id="L18">    public Rook(Position position,PieceColor color){</span>
+<span class="fc" id="L19">        this.position = position;</span>
+<span class="fc" id="L20">        this.color = color;</span>
+<span class="fc" id="L21">        this.moved = false;</span>
+<span class="fc" id="L22">    }</span>
+
+    @Override
+    public Position getPosition() {
+<span class="fc" id="L26">        return position;</span>
+    }
+
+    @Override
+    public boolean isWhite() {
+<span class="pc bpc" id="L31" title="1 of 2 branches missed.">        return color == PieceColor.WHITE;</span>
+    }
+    @Override
+    public boolean isBlack() {
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">        return color == PieceColor.BLACK;</span>
+    }
+
+    @Override
+    public List&lt;Position&gt; getPossibleMoves() {
+<span class="fc" id="L40">        List&lt;Position&gt; availableMovesSet = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L41">        int x = getPosition().getX();</span>
+<span class="fc" id="L42">        int y = getPosition().getY();</span>
+
+        // Add vertical moves except the current position
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        for (int i = 0; i &lt; 8; i++) {</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">            if (i != y) {</span>
+<span class="fc" id="L47">                availableMovesSet.add(new Position(x, i));</span>
+            }
+        }
+        // Add horizontal moves except the current position
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        for (int i = 0; i &lt; 8; i++) {</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">            if (i != x) {</span>
+<span class="fc" id="L53">                availableMovesSet.add(new Position(i, y));</span>
+            }
+        }
+<span class="fc" id="L56">        return availableMovesSet;</span>
+    }
+
+
+    public  List&lt;Position&gt; getPossibleAttacks(){
+<span class="fc" id="L61">      return getPossibleMoves();</span>
+    }
+
+    public boolean isMoveValid(Position newPosition){
+<span class="fc" id="L65">        List&lt;Position&gt; availableMoves = getPossibleMoves();</span>
+<span class="fc" id="L66">        return availableMoves.contains(newPosition);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

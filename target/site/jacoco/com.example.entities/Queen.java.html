@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Queen.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">chessgame</a> &gt; <a href="index.source.html" class="el_package">com.example.entities</a> &gt; <span class="el_source">Queen.java</span></div><h1>Queen.java</h1><pre class="source lang-java linenums">package com.example.entities;
+
+import com.example.PieceColor;
+import com.example.Position;
+import com.example.interfaces.ChessPiece;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Queen implements ChessPiece {
+
+    private  Position position;
+    private PieceColor color;
+    private  boolean moved;
+<span class="fc" id="L15">    public Queen(Position position,PieceColor color){</span>
+<span class="fc" id="L16">        this.position = position;</span>
+<span class="fc" id="L17">        this.color = color;</span>
+<span class="fc" id="L18">        moved = false;</span>
+<span class="fc" id="L19">    }</span>
+    @Override
+    public Position getPosition() {
+<span class="fc" id="L22">        return position;</span>
+    }
+    @Override
+    public boolean isBlack() {
+<span class="pc bpc" id="L26" title="1 of 2 branches missed.">        return color == PieceColor.BLACK;</span>
+    }
+
+    @Override
+    public boolean isWhite() {
+<span class="pc bpc" id="L31" title="1 of 2 branches missed.">        return color == PieceColor.WHITE;</span>
+    }
+
+
+    @Override
+    public List&lt;Position&gt; getPossibleMoves() {
+<span class="fc" id="L37">        List&lt;Position&gt; availableMoves = new  ArrayList&lt;&gt;();</span>
+<span class="fc" id="L38">        int [][] directions = {{1,1},{-1,-1},{1,-1},{-1,1}};</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        for(int i=0;i&lt;8;i++){</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">            if(i!=getPosition().getX()){</span>
+<span class="fc" id="L41">                availableMoves.add(new Position(i,getPosition().getY()));</span>
+            }
+<span class="fc bfc" id="L43" title="All 2 branches covered.">            if(i!=getPosition().getY()){</span>
+<span class="fc" id="L44">                availableMoves.add(new Position(getPosition().getX(),i));</span>
+            }
+        }
+<span class="fc bfc" id="L47" title="All 2 branches covered.">         for(int [] dir : directions){</span>
+<span class="fc" id="L48">             int dx = dir[0];</span>
+<span class="fc" id="L49">             int dy = dir[1];</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">             for(int i=1;i&lt;8;i++){</span>
+<span class="fc" id="L51">                 int newX = getPosition().getX()+i*dx;</span>
+<span class="fc" id="L52">                 int newY = getPosition().getY()+i*dy;</span>
+<span class="fc" id="L53">                 Position diagonaLine = new Position(newX,newY) ;</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">                 if(isValidMoves(diagonaLine)){</span>
+<span class="fc" id="L55">                     availableMoves.add(diagonaLine);</span>
+                 }
+             }
+
+         }
+<span class="fc" id="L60">        return availableMoves;</span>
+    }
+    @Override
+    public List&lt;Position&gt; getPossibleAttacks() {
+<span class="fc" id="L64">       return  getPossibleMoves();</span>
+    }
+
+    @Override
+    public boolean isMoveValid(Position position) {
+<span class="fc" id="L69">        List&lt;Position&gt; availableMoves = getPossibleMoves();</span>
+<span class="fc" id="L70">        return availableMoves.contains(position);</span>
+    }
+
+    private boolean isValidMoves(Position position){
+<span class="fc" id="L74">        int x = position.getX();</span>
+<span class="fc" id="L75">        int y = position.getY();</span>
+<span class="fc bfc" id="L76" title="All 8 branches covered.">        return  x&gt;=0 &amp;&amp; x&lt;8 &amp;&amp; y&gt;=0 &amp;&amp; y&lt;8;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
